@@ -1,3 +1,4 @@
+" My Neo Vim Config
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'terryma/vim-multiple-cursors'
@@ -14,6 +15,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ncm2/ncm2-tern',  {'do': 'yarn'}
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'ncm2/nvim-typescript', {'do': './install.sh'}
 call plug#end()
 
 "enable ncm2 for all buffers
@@ -32,6 +36,7 @@ set number
 set relativenumber
 set mouse=a
 set inccommand=split
+set shell=sh
 
 let mapleader="\<space>"
 nnoremap <leader>; A;<esc>
@@ -51,6 +56,14 @@ nnoremap <S-l> :tabnext <CR>
 nnoremap <S-n> :tabnew <CR>
 noremap <S-c> :tabclose<CR>
 
+:imap <tab>
 
+let g:NERDTreeGitStatusUseNerdFonts = 1
 
 "g:python3_host_prog=/user/bin/python3
+
+"NCM2 Config
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
